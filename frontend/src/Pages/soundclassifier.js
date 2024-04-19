@@ -36,10 +36,10 @@ export default function SoundClassifier(){
         }
     }
 
-    const getMicrophonePermission = async () => {
+    const getMicrophonePermission=async () => {
 		if ("MediaRecorder" in window) {
 			try {
-				const mediaStream = await navigator.mediaDevices.getUserMedia({
+				const mediaStream=await navigator.mediaDevices.getUserMedia({
 					audio: true,
 					video: false,
 				});
@@ -53,13 +53,13 @@ export default function SoundClassifier(){
 		}
 	};
 
-	const startRecording = async () => {
+	const startRecording=async () => {
 		setStatus("recording");
-		const media = new MediaRecorder(stream, { type: mimeType });
-		media.current = media;
+		const media=new MediaRecorder(stream, { type: mimeType });
+		media.current=media;
 		media.current.start();
-		let localAudioChunks = [];
-		media.current.ondataavailable = (event) => {
+		let localAudioChunks=[];
+		media.current.ondataavailable=(event) => {
 			if (typeof event.data === "undefined") return;
 			if (event.data.size === 0) return;
 			localAudioChunks.push(event.data);
@@ -67,13 +67,13 @@ export default function SoundClassifier(){
 		setChunks(localAudioChunks);
 	};
 
-	const stopRecording = () => {
+	const stopRecording=() => {
 		setStatus("inactive");
 		media.current.stop();
-		media.current.onstop = async () => {
-			const audioBlob = new Blob(Chunks, { type: mimeType });
-			const audioUrl = URL.createObjectURL(audioBlob);
-			const formData = new FormData();
+		media.current.onstop=async () => {
+			const audioBlob=new Blob(Chunks, { type: mimeType });
+			const audioUrl=URL.createObjectURL(audioBlob);
+			const formData=new FormData();
             formData.append('audio',audioBlob);
 			formData.append('url',audioUrl)
 			setAudio(audioUrl);

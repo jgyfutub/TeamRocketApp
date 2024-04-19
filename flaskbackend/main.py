@@ -49,7 +49,7 @@ def upload_video():
     print(video_file)
     blob_data = video_file.read()
     byte_array = bytearray(blob_data)
-    with open("video.mpg", 'wb') as f:
+    with open("./files/video.mpg", 'wb') as f:
         f.write(byte_array)
     return jsonify({"message":"done"})
 
@@ -58,9 +58,9 @@ def upload_audio():
     audio = request.files['audio']
     blob_data = audio.read()
     byte_array = bytearray(blob_data)
-    with open("audio.wav", 'wb') as f:
+    with open("./files/audio.wav", 'wb') as f:
         f.write(byte_array)
-    sample_rate,wav_data = wavfile.read("audio.wav")
+    sample_rate,wav_data = wavfile.read("./files/audio.wav")
     if np.ndim(np.array(wav_data))==2:
        wav_data=[int(sum(i)/len(i)) for i in wav_data]
     sample_rate, wav_data = ensure_sample_rate(sample_rate, wav_data)
@@ -79,7 +79,7 @@ def upload_audio():
 def image_upload():
     image=request.files['image']
     image=Image.open(image)
-    image.save("image.png")
+    image.save("./files/image.png")
     return jsonify({"message":"done"})
 
 if __name__ == '__main__':
