@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef  } from 'react'
 import axios from 'axios'
+import './soundclassifier.css'
 
 export default function SoundClassifier(){
     const [File, setFile]=useState(null)

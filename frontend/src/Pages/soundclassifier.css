@@ -1,0 +1,77 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  h2 {
+    color: #5d5d5d;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .audio-controls button,
+  input[type="file"],
+  button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .audio-controls button:hover,
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  div {
+    margin: 20px;
+  }
+  
+  input[type="file"] {
+    margin-bottom: 20px;
+  }
+  
+  p, ul {
+    color: #555;
+  }
+  
+  ul {
+    text-align: left;
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 5px 0;
+  }
+  
+  /* This is to style the file input field */
+  input[type='file'] {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  /* Extra styles for the result display */
+  .result-display {
+    background-color: #e7e7e7;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
