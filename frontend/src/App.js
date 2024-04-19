@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Mainpage from './Pages/main';
 import Home from './Pages/Home';
-import SoundClassifier from './Pages/soundclassifer';
+import SoundClassifier from './Pages/soundclassifier';
 
 function App() {
   return (
