@@ -1,24 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Mainpage from './Pages/main';
+import Home from './Pages/Home';
+import SoundClassifier from './Pages/soundclassifer';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/lipreading' element={<Mainpage/>}/>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/sounddetector' element={<SoundClassifier/>}/>
+      </Routes>
     </div>
+  </Router>
   );
 }
 
