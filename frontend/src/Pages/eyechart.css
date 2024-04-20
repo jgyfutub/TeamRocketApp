@@ -120,4 +120,8 @@
     font-size: 20px;
   }
 
-  
+  .result-display {
+    text-align: center; /* Centers the text inside the div */
+    margin-top: 20px; /* Adds space between the button and the result display */
+    width: 100%; /* Ensures the div takes full width to center the content properly */
+}

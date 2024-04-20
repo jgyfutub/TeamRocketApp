@@ -14,7 +14,7 @@ export default function ImageToText(){
     width: 420,
     height: 420,
     facingMode: "user",
-  };
+  }
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -51,7 +51,7 @@ export default function ImageToText(){
         </div>
       )}
     </div>
-  );
+  )
   }
   
     const TextToSpeech = ({ text }) => {
@@ -66,7 +66,7 @@ export default function ImageToText(){
       
           return () => {
             synth.cancel();
-          };
+          }
         }, [text]);
       
         const handlePlay = () => {
@@ -79,7 +79,7 @@ export default function ImageToText(){
           synth.speak(utterance);
       
           setIsPaused(false);
-        };
+        }
       
         const handlePause = () => {
           const synth = window.speechSynthesis;
@@ -87,7 +87,7 @@ export default function ImageToText(){
           synth.pause();
       
           setIsPaused(true);
-        };
+        }
       
         // const handleStop = () => {
         //   const synth = window.speechSynthesis;
@@ -102,12 +102,12 @@ export default function ImageToText(){
             <button onClick={handlePlay}>{isPaused ? "Resume" : "Play"}</button>
             {/* <button onClick={handlePause}>Pause</button> */}
           </div>
-        );
-      };
+        )
+      }
 
     const handleFileChange = (event) => {
         setimage(event.target.files[0])
-      };
+      }
     const handleUpload=async(event)=>{
         const formdata=new FormData()
         formdata.append('image',image)
