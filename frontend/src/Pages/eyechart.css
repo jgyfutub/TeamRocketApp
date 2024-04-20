@@ -1,0 +1,123 @@
+ 
+.eye-test-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .eye-test-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .letters {
+    text-align: left;
+    flex-grow: 1;
+  }
+  
+  .tick-box {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .tick-box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  
+  .tick-box input:checked ~ .checkmark {
+    background-color: #1DB954;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .tick-box input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .tick-box .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 8px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  @media (max-width: 768px) {
+    .eye-test-container {
+      padding: 10px;
+    }
+  
+    .eye-test-row .letters {
+      font-size: calc(4vw);  
+    }
+  
+    .tick-box {
+      padding-left: 25px;
+    }
+  
+    .checkmark {
+      height: 20px;
+      width: 20px;
+    }
+  
+    .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 6px;
+      height: 12px;
+    }
+  }
+
+.vision-result {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+.eye-test-checkbox {
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .result-display {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  
