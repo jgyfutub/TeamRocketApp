@@ -85,42 +85,42 @@ export default function SoundClassifier(){
 
 
     return (
-        <div>
-        <h2>Audio Recorder</h2>
-				<div className="audio-controls">
-					{!permission ? (
-						<button onClick={getMicrophonePermission} type="button">
-							Get Microphone
-						</button>
-					) : null}
-					{permission && Status === "inactive" ? (
-						<button onClick={startRecording} type="button">
-							Start Recording
-						</button>
-					) : null}
-					{Status === "recording" ? (
-						<button onClick={stopRecording} type="button">
-							Stop Recording
-						</button>
-					) : null}
-				</div>
-        <div>
-                <input type="file" onChange={handleFileChange} />
-                <button onClick={handleUpload}>Upload an WAV file</button>
-        </div>
-        {
-					result.length!=0?(
-						<div>
-						<p>The main sound is : {result[0]}</p>
-						<br/>
-						<p>the other possibilities are: </p>
+		<div>
+		<h2>Audio Recorder</h2>
+			<div className="audio-controls">
+				{!permission ? (
+					<button onClick={getMicrophonePermission} type="button">
+						Use Microphone
+					</button>
+				) : null}
+				{permission && Status === "inactive" ? (
+					<button onClick={startRecording} type="button">
+						Start Recording
+					</button>
+				) : null}
+				{Status === "recording" ? (
+					<button onClick={stopRecording} type="button">
+						Stop Recording
+					</button>
+				) : null}
+			</div>
+			<div className="file-upload-controls">
+				<input type="file" onChange={handleFileChange} />
+				<button onClick={handleUpload}>Upload</button>
+			</div>
+			<div className="result-display">
+				{result.length !== 0 ? (
+					<>
+						<p>The main sound is: {result[0]}</p>
+						<p>The other possibilities are:</p>
 						<ul>
-					{result.slice(1).map((item, index) => (
-					<li key={index}>{item}</li>
-					))}
-				</ul>
-	   </div>
-					):<div></div> } 
-        </div>
-    )
+							{result.slice(1).map((item, index) => (
+								<li key={index}>{item}</li>
+							))}
+						</ul>
+					</>
+				) : null}
+			</div>
+		</div>
+	)
 }
