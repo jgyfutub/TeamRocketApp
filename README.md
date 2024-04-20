@@ -2,9 +2,9 @@
 
 This is a web app made for disabled people who have problem in hearing, seeing and talking. It takes input in different format and provides the desired output for user who later can use it to analyze and "see" things in his own way.The features of this app are:
 - It can take audio file in its input and provide details about the audio, particulary made keeoing in mind the needs of deaf people
-- It can take image file as an input, it may be captured then and there, or it may be an input from a device, the output is an audio file which tells us what is going in the image, vividly, made with keeping in minds blind people.
-- The webapp can take take a video file as input and recognize the lip movement and make words out of it, making it enable to mute people to convey their messages or words.
-- The webapp also provides some tests by which we can detect a particular type of disabiltiy, like astigmatism detection test.
+- It can take image file as an input, it may be captured then and there, or it may be an input from a device, the output text which can also be converted to an audio which tells us what is going in the image, vividly, made with keeping in minds blind people.
+- The webapp can take take a video file as input and recognize the lip movement and make words out of it, making it enable to mute people to convey their messages or words via text or by text to speech.
+- The webapp also provides some tests by which we can detect a particular type of disabiltiy, like astigmatism detection test,Sound test and Eye test
 
 ## Tech Stack
 
@@ -14,9 +14,10 @@ This is a web app made for disabled people who have problem in hearing, seeing a
 - Tensorflow-Hub
 - HuggingFace Transformers
 - OpenCv Python
-- Howler(Reactjs)
+- Howler (Reactjs)
 - CSS
 - HTML
+- React Webcam
 
 ## Installation Guide 
 
@@ -42,5 +43,6 @@ This is a web app made for disabled people who have problem in hearing, seeing a
 ## Made at:
 ![](https://i.postimg.cc/HnNN23zD/built-at-hack36.png.)
 
-
-
+## Made with ❤️ by:
+- [Vedant Pandey](https://github.com/jgyfutub)
+- [Ashutosh Kumar](https://github.com/ashurockzz)
