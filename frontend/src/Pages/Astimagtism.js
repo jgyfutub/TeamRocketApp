@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback  } from 'react'
-import axios from 'axios'
+
 import eye from './eyes.png'
 import { useNavigate } from "react-router-dom";
 import pattern from './pattern.png'
@@ -63,8 +63,8 @@ export default function Astimagtism(){
         <img src={pattern}/>
         <p>Do all the lines appear in the same shade of black?</p>
         <div style={{display:'flex',justifyContent:'center',columnGap:40}}>
-            <button onClick={toggleVisibility2} value='yes'>yes</button >
-            <button  onClick={toggleVisibility2} value='no'>no</button >
+            <button onClick={toggleVisibility2} value='yes'>yes </button >
+            <button  onClick={toggleVisibility2} value='no'>no </button >
         </div>
         </div>}
         {isVisible3 && <div className='card1'>
@@ -79,8 +79,8 @@ export default function Astimagtism(){
             <img src={pattern}/>
         <p>Do all the lines appear in the same shade of black?</p>
         <div style={{display:'flex',justifyContent:'center',columnGap:40}}>
-            <button  onClick={toggleVisibility4} value='yes'>yes</button >
-            <button  onClick={toggleVisibility4} value='no'>no</button >
+            <button  onClick={toggleVisibility4} value='yes'>yes </button >
+            <button  onClick={toggleVisibility4} value='no'>no </button >
         </div>
         </div>}
         {showresult && <div className='result'>

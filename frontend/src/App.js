@@ -8,6 +8,7 @@ import SoundClassifier from './Pages/soundclassifier';
 import ImageToText from './Pages/imageclassifier';
 import Astimagtism from './Pages/Astimagtism';
 import EyeTest from './Pages/eyechart';
+import AudioPlayer from './Pages/soundtest';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/imagetotext' element={<ImageToText/>}/>
         <Route path='/astimagtism' element={<Astimagtism/>}/>
         <Route path='/eyechart' element={<EyeTest/>}/>
+        <Route path='/soundtest' element={<AudioPlayer/>}/>
       </Routes>
     </div>
   </Router>
