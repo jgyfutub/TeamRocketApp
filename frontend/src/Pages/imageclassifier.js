@@ -89,19 +89,18 @@ export default function ImageToText(){
           setIsPaused(true);
         };
       
-        const handleStop = () => {
-          const synth = window.speechSynthesis;
+        // const handleStop = () => {
+        //   const synth = window.speechSynthesis;
       
-          synth.cancel();
+        //   synth.cancel();
       
-          setIsPaused(false);
-        };
+        //   setIsPaused(false);
+        // };
       
         return (
-          <div>
+          <div style={{display:'flex',justifyContent:'space-evenly',flexWrap:'wrap'}}>
             <button onClick={handlePlay}>{isPaused ? "Resume" : "Play"}</button>
-            <button onClick={handlePause}>Pause</button>
-            <button onClick={handleStop}>Stop</button>
+            {/* <button onClick={handlePause}>Pause</button> */}
           </div>
         );
       };

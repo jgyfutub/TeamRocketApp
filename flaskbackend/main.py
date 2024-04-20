@@ -15,7 +15,13 @@ import csv
 import scipy
 import io
 import cv2
+import time
 from transformers import pipeline
+import random
+
+def generate_random_string():
+    random_string = ''.join(random.choices('0123456789', k=10))
+    return random_string
 
 app=Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -81,9 +87,10 @@ def upload_video():
     print(video_file)
     blob_data=video_file.read()
     byte_array=bytearray(blob_data)
-    with open("./files/video.mpg", 'wb') as f:
+    ranstring=generate_random_string()
+    with open("./files/video"+ranstring+".mpg", 'wb') as f:
         f.write(byte_array)
-    sample=loadvideo("./files/video.mpg")
+    sample=loadvideo("./files/video"+ranstring+".mpg")
     sample=tf.expand_dims(sample, axis=0)
     print(sample)
     sample =tf.pad(sample, [[0, 0], [0, 0], [0, 0], [0, 20], [0, 0]])
@@ -96,16 +103,17 @@ def upload_video():
     decoded=tf.keras.backend.ctc_decode(result, input_length=[75], greedy=True)[0][0].numpy()
     regular_string=[tf.strings.reduce_join([num_to_char(word) for word in sentence]) for sentence in decoded][0].numpy().decode('utf-8')
     print(regular_string)
-    return jsonify({"message":"done"})
+    return jsonify({"message":"done","result":regular_string})
 
 @app.route('/upload_audio', methods=['POST'])
 def upload_audio():
     audio=request.files['audio']
     blob_data=audio.read()
     byte_array=bytearray(blob_data)
-    with open("./files/audio.wav", 'wb') as f:
+    ranstring=generate_random_string()
+    with open("./files/audio"+ranstring+".wav", 'wb') as f:
         f.write(byte_array)
-    sample_rate,wav_data=wavfile.read("./files/audio.wav")
+    sample_rate,wav_data=wavfile.read("./files/audio"+ranstring+".wav")
     if np.ndim(np.array(wav_data))==2:
        wav_data=[int(sum(i)/len(i)) for i in wav_data]
     sample_rate, wav_data=ensure_sample_rate(sample_rate, wav_data)
@@ -124,8 +132,9 @@ def upload_audio():
 def image_upload():
     image=request.files['image']
     image=Image.open(image)
-    image.save("./files/image.png")
-    result=image_to_text("./files/image.png")[0]['generated_text']
+    ranstring=generate_random_string()
+    image.save("./files/image"+ranstring+".png")
+    result=image_to_text("./files/image"+ranstring+".png")[0]['generated_text']
     return jsonify({"message":"done","result":result})
 
 
@@ -136,8 +145,9 @@ def image_captured_upload():
     print(data)
     image_data = io.BytesIO(base64.b64decode(data))
     image = Image.open(image_data)
-    image.save("./files/image.png")
-    result=image_to_text("./files/image.png")[0]['generated_text']
+    ranstring=generate_random_string()
+    image.save("./files/image"+ranstring+".png")
+    result=image_to_text("./files/image"+ranstring+".png")[0]['generated_text']
     print(result)
     return jsonify({"message":"done","result":result})
 if __name__ == '__main__':

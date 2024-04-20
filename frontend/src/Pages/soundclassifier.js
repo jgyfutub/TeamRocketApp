@@ -114,7 +114,7 @@ export default function SoundClassifier(){
 						<p>The main sound is : {result[0]}</p>
 						<br/>
 						<p>the other possibilities are: </p>
-						<ul>
+						<ul style={{display:'grid',justifyContent:'center'}}>
 					{result.slice(1).map((item, index) => (
 					<li key={index}>{item}</li>
 					))}
