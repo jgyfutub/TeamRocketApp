@@ -5,14 +5,14 @@ export default function Mainpage(){
     const mimeType='video/webm'
 
     const [permission, setPermission]=useState(false)
-    const media=useRef(null)
+    const mediaRec=useRef(null)
     const Feed=useRef(null)
     const [recording, setRecording]=useState("inactive")
     const [stream, setStream]=useState(null)
     const [video, setVideo]=useState([])
     const [recorded, setRecorded]=useState(null)
     const [file, setFile]=useState(null)
-    const [Blob, setBlob]=useState(null)
+    const [Blobs, setBlob]=useState(null)
     const [sentence,setSentence]=useState('')
 
     const handleFileChange=(e)=>{
@@ -125,10 +125,10 @@ export default function Mainpage(){
           const startRecording = async () => {
               setRecording("recording");
               const media = new MediaRecorder(stream, { mimeType });
-              media.current = media;
-              media.current.start();
+              mediaRec.current = media;
+              mediaRec.current.start();
               let localVideoChunks = [];
-              media.current.ondataavailable = (event) => {
+              mediaRec.current.ondataavailable = (event) => {
                   if (typeof event.data === "undefined") return;
                   if (event.data.size === 0) return;
                   localVideoChunks.push(event.data);
@@ -139,8 +139,8 @@ export default function Mainpage(){
           const stopRecording =  () => {
               setPermission(false);
               setRecording("inactive");
-              media.current.stop();
-              media.current.onstop = async () => {
+              mediaRec.current.stop();
+              mediaRec.current.onstop = async () => {
                   const videoBlob = new Blob(video, { type: 'video/mpeg'});
                   const formData = new FormData();
                   formData.append('video',videoBlob);        
@@ -177,7 +177,7 @@ export default function Mainpage(){
 				) : null}
 			</div>
             <div>
-                <input type="file" onChange={handleFileChange} />
+                <input type="file" onChange={handleFileChange} style={{width:200,marginRight:50}}  />
                 <button onClick={handleUpload}>Upload an MPG file</button>
             </div>
             <p>{sentence}</p>

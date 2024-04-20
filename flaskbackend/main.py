@@ -13,6 +13,7 @@ from scipy.io import wavfile
 from PIL import Image
 import csv
 import scipy
+import io
 import cv2
 from transformers import pipeline
 
@@ -127,5 +128,17 @@ def image_upload():
     result=image_to_text("./files/image.png")[0]['generated_text']
     return jsonify({"message":"done","result":result})
 
+
+@app.route('/upload_captured_image', methods=['POST'])
+def image_captured_upload():
+    image=request.form.get('image')
+    _, data = image.split(',')
+    print(data)
+    image_data = io.BytesIO(base64.b64decode(data))
+    image = Image.open(image_data)
+    image.save("./files/image.png")
+    result=image_to_text("./files/image.png")[0]['generated_text']
+    print(result)
+    return jsonify({"message":"done","result":result})
 if __name__ == '__main__':
     app.run(debug=True,port=5000)

@@ -105,7 +105,7 @@ export default function SoundClassifier(){
 					) : null}
 				</div>
         <div>
-                <input type="file" onChange={handleFileChange} />
+                <input type="file" onChange={handleFileChange} style={{width:200,marginRight:50}} />
                 <button onClick={handleUpload}>Upload an WAV file</button>
         </div>
         {

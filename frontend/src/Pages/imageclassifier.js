@@ -1,40 +1,59 @@
-import React, { useEffect, useState, useRef  } from 'react'
+import React, { useEffect, useState, useRef, useCallback  } from 'react'
 import axios from 'axios'
 import Webcam from "react-webcam";
 
 export default function ImageToText(){
     const [image,setimage]=useState(null)
-    const [imgSrc, setImgSrc] = useState(null)
     const [sentence,setSentence]=useState('')
-    const videoConstraints = {
-        width: 1280,
-        height: 720,
-        facingMode: "user"
-      };
-    //   useEffect(()=>{
-    //     console.log(imgSrc)
-    //   },[imgSrc])
-    //   const WebcamCapture = () => (
-    //     <Webcam
-    //       audio={false}
-    //       height={720}
-    //       screenshotFormat="image/jpeg"
-    //       width={1280}
-    //       videoConstraints={videoConstraints}
-    //     >
-    //       {({ getScreenshot }) => (
-    //         <button
-    //           onClick={() => {
-    //             const imageSrc = getScreenshot()
-    //             setImgSrc(imgSrc)
-    //           }}
-    //         >
-    //           Capture photo
-    //         </button>
-    //       )}
-    //     </Webcam>
-    //   );
+  const [imgSrc, setImgSrc] = useState(null);
+  const WebcamCapture=()=>{
+    const [img, setImg] = useState(null);
+  const webcamRef = useRef(null);
 
+  const videoConstraints = {
+    width: 420,
+    height: 420,
+    facingMode: "user",
+  };
+
+  const capture = useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImg(imageSrc);
+  }, [webcamRef]);
+  const SentCaputuredtoFlask=async()=>{
+    const formdata=new FormData()
+    formdata.append('image',img )
+    const result=await axios.post('http://127.0.0.1:5000/upload_captured_image',formdata)
+    setSentence(result.data.result)
+    
+  }
+
+
+  return (
+    <div className="Container">
+      {img === null ? (
+        <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',columnGap:50}}>
+          <Webcam
+            audio={false}
+            mirrored={true}
+            height={400}
+            width={400}
+            ref={webcamRef}
+            screenshotFormat="image/png"
+            videoConstraints={videoConstraints}
+          />
+          <button onClick={capture} style={{width:150,height:50,marginTop:'10%'}}>Capture photo</button>
+        </div>
+      ) : (
+        <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',columnGap:50}}>
+          <img src={img} alt="screenshot" />
+          <button onClick={SentCaputuredtoFlask} style={{width:150,height:50,marginTop:'10%'}}>Upload to model</button>
+        </div>
+      )}
+    </div>
+  );
+  }
+  
     const TextToSpeech = ({ text }) => {
         const [isPaused, setIsPaused] = useState(false);
         const [utterance, setUtterance] = useState(null);
@@ -97,7 +116,7 @@ export default function ImageToText(){
         setSentence(result.data.result)
     }
     return (<div>
-    {/* <WebcamCapture/> */}
+    <WebcamCapture/>
     <img src={imgSrc}/>
     <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
                 <input type="file" onChange={handleFileChange} style={{width:200,marginRight:50}} />
