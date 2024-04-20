@@ -10,7 +10,7 @@ export default function SoundClassifier() {
     const [stream, setStream] = useState(null);
     const [chunks, setChunks] = useState([]);
     const [result, setResult] = useState([]);
-    const mimeType = "audio/wav";
+    const mimeType = "audio/webm";
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -76,7 +76,7 @@ export default function SoundClassifier() {
             const audioUrl = URL.createObjectURL(audioBlob);
             const formData = new FormData();
             formData.append('audio', audioBlob);
-            const result = await axios.post('http://127.0.0.1:5000/upload_audio', formData);
+            const result = await axios.post('http://127.0.0.1:5000/upload_recaudio', formData);
             setResult(result.data.result);
             setChunks([]);
             alert('Recording stopped and data sent.'); // Feedback when recording stops

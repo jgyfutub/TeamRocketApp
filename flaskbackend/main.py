@@ -128,6 +128,32 @@ def upload_audio():
     arr=[class_names[top_class_indices[x]] for x in range(0, top_n, 1)]
     return jsonify({"message":"done","result":arr})
 
+@app.route('/upload_recaudio', methods=['POST'])
+def upload_recaudio():
+    audio=request.files['audio']
+    blob_data=audio.read()
+    byte_array=bytearray(blob_data)
+    ranstring=generate_random_string()
+    with open("./files/audio"+ranstring+".webm", 'wb') as f:
+        f.write(byte_array)
+    # clip = moviepy.VideoFileClip("./files/audio"+ranstring+".webm")
+    # clip.audio.write_audiofile("./files/audio"+ranstring+".wav")
+    # sample_rate,wav_data=wavfile.read("./files/audio"+ranstring+".wav")
+    # if np.ndim(np.array(wav_data))==2:
+    #    wav_data=[int(sum(i)/len(i)) for i in wav_data]
+    # sample_rate, wav_data=ensure_sample_rate(sample_rate, wav_data)
+    # waveform=wav_data / tf.int16.max
+    # scores, _,_ =soundmodel(waveform)
+    # scores_np=scores.numpy()
+    # infered_class=class_names[scores_np.mean(axis=0).argmax()]
+    # print(infered_class)
+    # mean_scores=np.mean(scores, axis=0)
+    # top_n=10
+    # top_class_indices=np.argsort(mean_scores)[::-1][:top_n]
+    # arr=[class_names[top_class_indices[x]] for x in range(0, top_n, 1)]
+    return jsonify({"message":"failee","result":arr})
+    
+
 @app.route('/upload_image', methods=['POST'])
 def image_upload():
     image=request.files['image']

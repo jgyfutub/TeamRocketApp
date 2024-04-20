@@ -25,27 +25,27 @@ export default function Home() {
 
     return (
         <div style={backgroundStyle}>
-            <h1 style={{ color: 'black' }}>TeamRocketApp</h1>
-            <h1 style={{ color: 'black' }}>Tools</h1>
+            <h1 style={{ color: 'black' ,fontSize: 60,fontWeight:'bold' }}>Empower all : Accessibility <span style={{ color: 'white'}}>and</span> Tools</h1>
+            <h1 style={{ color: 'black' , fontWeight: 800}}>Tools</h1>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ display: 'grid', marginInline: 'auto' }}>
                     <button onClick={() => handleNavigate("/lipreading", "Lip Reading Page")}
                             aria-label="Navigate to the Lip Reading page">Lip reading</button>
                     <button onClick={() => handleNavigate("/sounddetector", "Sound Prediction Page")}
-                            aria-label="Navigate to the Prediction of Sound page">Prediction of sound</button>
+                            aria-label="Navigate to the Prediction of Sound page">Sound prediction</button>
                     <button onClick={() => handleNavigate("/imagetotext", "Image to Text Conversion Page")}
                             aria-label="Navigate to the Image to Text page">Image to text</button>
                 </div>
             </div>
-            <h1 style={{ color: 'black' }}>Tests</h1>
+            <h1 style={{ color: 'black', fontWeight: 800 }}>Tests</h1>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ display: 'grid', marginInline: 'auto' }}>
-                    <button onClick={() => handleNavigate("/astigmatism", "Astigmatism Test Page")}
-                            aria-label="Navigate to the Astigmatism Test page">Astigmatism</button>
+                    <button onClick={() => handleNavigate("/astimagtism", "Astigmatism Test Page")}
+                            aria-label="Navigate to the Astigmatism Test page">Astigmatism test</button>
                     <button className="button" onClick={() => handleNavigate("/eyechart", "Eye Chart Test Page")}
                             aria-label="Navigate to the Eye Chart Test page">Eye Chart Test</button>
                     <button onClick={() => handleNavigate("/soundtest", "Sound Test Page")}
-                            aria-label="Navigate to the Sound Test page">Sound test</button>
+                            aria-label="Navigate to the Sound Test page">Hearing test</button>
                 </div>
             </div>
         </div>

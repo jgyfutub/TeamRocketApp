@@ -35,6 +35,7 @@ const EyeTest = () => {
 
   return (
     <div className="eye-test-container">
+    <p style={{color:'red'}}>Note:Stand atleast 20 metres far from screen</p>
       {rows.map((row, index) => (
         <div key={index} className="eye-test-row">
           <span

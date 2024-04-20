@@ -65,27 +65,11 @@ export default function Mainpage(){
           setIsPaused(false);
         };
       
-        const handlePause = () => {
-          const synth = window.speechSynthesis;
-      
-          synth.pause();
-      
-          setIsPaused(true);
-        };
-      
-        const handleStop = () => {
-          const synth = window.speechSynthesis;
-      
-          synth.cancel();
-      
-          setIsPaused(false);
-        };
+
       
         return (
           <div>
             <button onClick={handlePlay}>{isPaused ? "Resume" : "Play"}</button>
-            <button onClick={handlePause}>Pause</button>
-            <button onClick={handleStop}>Stop</button>
           </div>
         );
       };
