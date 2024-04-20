@@ -36,3 +36,63 @@
     transform: rotate(360deg);
   }
 }
+
+.vision-test-container {
+  width: 100%;
+  text-align: center;
+  padding: 2em;
+  background-color: #333;  
+  box-sizing: border-box;
+}
+
+.vision-test-container img {
+  max-width: 90%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.vision-test-container h2, 
+.vision-test-container p {
+  color: #fff; 
+}
+
+.vision-test-container p {
+  font-size: 1.1rem;  
+  line-height: 1.6;  
+  margin: 10px 0;
+}
+
+.vision-test-container button {
+  background-color: #1DB954;  
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.vision-test-container button:hover {
+  background-color: #1ED760;  
+}
+
+.vision-test-container .result-section {
+  margin: 20px 0;
+}
+
+.vision-test-container .result-section p {
+  font-weight: bold;  
+}
+
+ 
+.vision-test-container a {
+  color: #4caf50;  
+  text-decoration: none;  
+}
+
+.vision-test-container a:hover {
+  text-decoration: underline;  
+}
