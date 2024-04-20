@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Mainpage from './Pages/main';
 import Home from './Pages/Home';
 import SoundClassifier from './Pages/soundclassifier';
+import ImageToText from './Pages/imageclassifier';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/lipreading' element={<Mainpage/>}/>
         <Route path='/' element={<Home/>}/>
         <Route path='/sounddetector' element={<SoundClassifier/>}/>
+        <Route path='/imagetotext' element={<ImageToText/>}/>
       </Routes>
     </div>
   </Router>
