@@ -8,8 +8,15 @@ This is a web app made for disabled people who have problem in hearing, seeing a
 
 ## Tech Stack
 
+- Reactjs
+- Flask
 - Tensorflow
-- 
+- Tensorflow-Hub
+- HuggingFace Transformers
+- OpenCv Python
+- Howler(Reactjs)
+- CSS
+- HTML
 
 ## Installation Guide 
 
@@ -19,18 +26,21 @@ This is a web app made for disabled people who have problem in hearing, seeing a
 ## For Flask
 
 - Open Command prompt of your system
-- ensure that virtual enviroment and python is installed in system
+- ensure that virtual enviroment,flask and python is installed in system
 - write ` python -m venv venv ` to enter a virtual enviroment
 - write ` venv\Scripts\activate ` to activate it
-- now cd to pybackend to access flask file
-- install dependencies ` pip install flask tensorflow tensorflow-hub transformers opencv-python `
+- now cd to flaskbackend folder of this folder to access flask file
+- install dependencies ` pip install tensorflow tensorflow-hub transformers opencv-python scipy Pillow`
 - now write  python main.py ` to start server at http://localhost:8000/ `
 
 ## For react
 
-- open terminal in VS code and go into frontend folder if you are not there
+- open terminal in VS code and go into frontend folder folder of this folder to access frontend files
 - write ` npm i ` for all frontend modules to be downloaded
 - write ` npm start ` to start the frontend server
+
+## Made at:
+![](https://i.postimg.cc/HnNN23zD/built-at-hack36.png.)
 
 
 
