@@ -14,7 +14,7 @@ export default function SoundClassifier() {
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
-        alert('File selected for upload.'); // Audible feedback when file is selected
+        alert('File selected for upload.'); 
     };
 
     const handleUpload = async (e) => {
@@ -28,7 +28,7 @@ export default function SoundClassifier() {
                 formData.append('audio', blob);
                 const result = await axios.post('http://127.0.0.1:5000/upload_audio', formData);
                 setResult(result.data.result);
-                alert('Audio file uploaded and processed.'); // Feedback when file is uploaded and processed
+                alert('Audio file uploaded and processed.');
             };
         } else {
             alert("Please select a .wav format file for upload.");
@@ -44,7 +44,7 @@ export default function SoundClassifier() {
                 });
                 setPermission(true);
                 setStream(mediaStream);
-                alert('Microphone access granted.'); // Feedback when microphone access is granted
+                alert('Microphone access granted.'); 
             } catch (err) {
                 alert(err.message);
             }
@@ -65,7 +65,7 @@ export default function SoundClassifier() {
             }
         };
         setChunks(localAudioChunks);
-        alert('Recording started.'); // Feedback when recording starts
+        alert('Recording started.'); 
     };
 
     const stopRecording = () => {
@@ -79,7 +79,7 @@ export default function SoundClassifier() {
             const result = await axios.post('http://127.0.0.1:5000/upload_recaudio', formData);
             setResult(result.data.result);
             setChunks([]);
-            alert('Recording stopped and data sent.'); // Feedback when recording stops
+            alert('Recording stopped and data sent.'); 
         };
     };
 

@@ -43,6 +43,9 @@ This is a web app made for disabled people who have problem in hearing, seeing a
 ## Made at:
 ![](https://i.postimg.cc/HnNN23zD/built-at-hack36.png.)
 
+## PPT Link
+[Presentation Link](https://docs.google.com/presentation/d/1ohAF46GL41UVxmVRRkqtDpmgVnLys-gg/edit?usp=sharing&ouid=106854006533288660294&rtpof=true&sd=true)
+
 ## Video Link:
 
 [Video Link](https://drive.google.com/file/d/1sWM1thAGV7RdMaexq6fj77R3jBnTAlvX/view?usp=drive_link)

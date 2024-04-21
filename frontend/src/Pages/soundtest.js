@@ -10,17 +10,17 @@ function AudioPlayer() {
 
   const handlePlayPause = () => {
     setPlaying(!playing);
-    alert(`Playback ${playing ? 'paused' : 'resumed'}.`);  // Providing feedback on play/pause
+    alert(`Playback ${playing ? 'paused' : 'resumed'}.`);  
   }
 
   const changeVolume = () => {
     setVolume(volume - 0.2);
-    alert(`Volume decreased to ${volume.toFixed(1)}.`);  // Providing feedback on volume change
+    alert(`Volume decreased to ${volume.toFixed(1)}.`);  
   }
 
   const changeReaction = () => {
     setReaction('no');
-    alert('No, unable to hear the sound.');  // Providing feedback on reaction change
+    alert('No, unable to hear the sound.'); 
   }
 
   if (volume > 0.1) {

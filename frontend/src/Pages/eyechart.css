@@ -109,7 +109,7 @@
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #1DB954; /* Spotify green */
+    background-color: #1DB954;
     color: white;
     border: none;
     cursor: pointer;
@@ -121,7 +121,7 @@
   }
 
   .result-display {
-    text-align: center; /* Centers the text inside the div */
-    margin-top: 20px; /* Adds space between the button and the result display */
-    width: 100%; /* Ensures the div takes full width to center the content properly */
+    text-align: center;
+    margin-top: 20px;
+    width: 100%; 
 }
