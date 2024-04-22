@@ -18,6 +18,8 @@ import cv2
 import time
 from transformers import pipeline
 import random
+import wave
+import soundfile as sf
 
 def generate_random_string():
     random_string = ''.join(random.choices('0123456789', k=10))
@@ -133,25 +135,28 @@ def upload_recaudio():
     audio=request.files['audio']
     blob_data=audio.read()
     byte_array=bytearray(blob_data)
+    byte_array = [float(val) / 255.0 for val in byte_array]
     ranstring=generate_random_string()
-    with open("./files/audio"+ranstring+".webm", 'wb') as f:
-        f.write(byte_array)
-    # clip = moviepy.VideoFileClip("./files/audio"+ranstring+".webm")
-    # clip.audio.write_audiofile("./files/audio"+ranstring+".wav")
-    # sample_rate,wav_data=wavfile.read("./files/audio"+ranstring+".wav")
-    # if np.ndim(np.array(wav_data))==2:
-    #    wav_data=[int(sum(i)/len(i)) for i in wav_data]
-    # sample_rate, wav_data=ensure_sample_rate(sample_rate, wav_data)
-    # waveform=wav_data / tf.int16.max
-    # scores, _,_ =soundmodel(waveform)
-    # scores_np=scores.numpy()
-    # infered_class=class_names[scores_np.mean(axis=0).argmax()]
-    # print(infered_class)
-    # mean_scores=np.mean(scores, axis=0)
-    # top_n=10
-    # top_class_indices=np.argsort(mean_scores)[::-1][:top_n]
-    # arr=[class_names[top_class_indices[x]] for x in range(0, top_n, 1)]
-    return jsonify({"message":"failee","result":arr})
+    with open("./files/audio"+ranstring+".wav", 'wb') as f:
+        sf.write("./files/audio"+ranstring+".wav",byte_array,16000)
+    with wave.open("./files/audio"+ranstring+".wav", 'rb') as wav_file:
+        sample_rate = wav_file.getframerate()
+        num_channels = wav_file.getnchannels()
+        sample_width = wav_file.getsampwidth()
+        num_frames = wav_file.getnframes()
+        audio_data = wav_file.readframes(num_frames)
+        audio_array = list(wave.struct.unpack(f'{num_frames * num_channels}h', audio_data))
+        sample_rate, wav_data=ensure_sample_rate(sample_rate, audio_array )
+        max_value = max(abs(sample) for sample in wav_data)
+        waveform = [sample / max_value for sample in wav_data]
+        scores, _,_ =soundmodel(waveform)
+        scores_np=scores.numpy()
+        infered_class=class_names[scores_np.mean(axis=0).argmax()]
+        mean_scores=np.mean(scores, axis=0)
+        top_n=10
+        top_class_indices=np.argsort(mean_scores)[::-1][:top_n]
+        arr=[class_names[top_class_indices[x]] for x in range(0, top_n, 1)]
+        return jsonify({"message":"done","result":arr})
     
 
 @app.route('/upload_image', methods=['POST'])

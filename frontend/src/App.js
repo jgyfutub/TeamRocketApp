@@ -22,6 +22,7 @@ function App() {
         <Route path='/astimagtism' element={<Astimagtism/>}/>
         <Route path='/eyechart' element={<EyeTest/>}/>
         <Route path='/soundtest' element={<AudioPlayer/>}/>
+        {/* <Route exact path="/terminos" render={() => {window.location.href="index.html"}} /> */}
       </Routes>
     </div>
   </Router>
